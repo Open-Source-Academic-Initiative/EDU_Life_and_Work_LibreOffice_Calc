@@ -1,0 +1,1 @@
+Asegúrate de pegar aquí las imágenes .jpg

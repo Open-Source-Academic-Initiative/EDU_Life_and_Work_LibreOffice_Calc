@@ -1,0 +1,21 @@
+<?xml version="1.0" standalone="no" ?>
+<manifest identifier="CalcPymesManifest" version="1.3" xmlns="http://www.imsglobal.org/xsd/imscp_v1p1">
+    <metadata><schema>ADL SCORM</schema><schemaversion>2004 3rd Edition</schemaversion></metadata>
+    <organizations default="default_org">
+        <organization identifier="default_org">
+            <title>Curso: Calc para Pymes (La Universal)</title>
+            <item identifier="item_1" identifierref="resource_1"><title>Unidades del Curso</title></item>
+        </organization>
+    </organizations>
+    <resources>
+        <resource identifier="resource_1" type="webcontent" adlcp:scormtype="sco" href="curso_la_universal.html" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_v1p3">
+            <file href="curso_la_universal.html"/>
+            <file href="multimedia/img/image_a8cad46.jpg"/>
+            <file href="multimedia/img/image_b8d03d7.jpg"/>
+            <file href="multimedia/img/image_c8d03d8.jpg"/>
+            <file href="multimedia/img/image_d8d03d9.jpg"/>
+            <file href="multimedia/img/image_e8d03d0.jpg"/>
+            <file href="multimedia/img/image_f8d03d1.jpg"/>
+        </resource>
+    </resources>
+</manifest>
