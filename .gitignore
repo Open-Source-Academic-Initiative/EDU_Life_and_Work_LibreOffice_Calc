@@ -1,0 +1,7 @@
+# build outputs (reproducible with scripts/)
+build/
+dist/
+__pycache__/
+*.pyc
+# LibreOffice lock files
+.~lock.*#

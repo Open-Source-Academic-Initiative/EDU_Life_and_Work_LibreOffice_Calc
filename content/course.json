@@ -1,0 +1,1550 @@
+{
+  "id": "calc-la-universal",
+  "version": "2.1.1",
+  "title": "LibreOffice Calc para pymes: de la libreta al computador",
+  "shortTitle": "La Universal",
+  "subtitle": "Escuela de Datos",
+  "passingScore": 70,
+  "certificate": {
+    "title": "Certificado de participación",
+    "program": "Habilidades Digitales para el Trabajo",
+    "courseLine": [
+      {
+        "text": "Curso "
+      },
+      {
+        "text": "Excel",
+        "italic": true
+      },
+      {
+        "text": " con LibreOffice"
+      }
+    ],
+    "issuer": "Open Source Academic Initiative (OpenSAI)",
+    "site": "campus.opensai.org",
+    "logo": "opensai_logo",
+    "serialPrefix": "OSAI",
+    "verifyUrl": "https://campus.opensai.org/local/certverify/index.php?serial={serial}"
+  },
+  "units": [
+    {
+      "id": "u0",
+      "label": "Unidad 0",
+      "title": "Bienvenida: antes de empezar",
+      "icon": "flag",
+      "minutes": 25,
+      "skills": [
+        "Instalar LibreOffice de forma segura en Windows o Linux",
+        "Reconocer las partes de la ventana de Calc",
+        "Guardar en .ods, .xlsx y PDF"
+      ],
+      "slides": [
+        {
+          "id": "u0-bienvenida",
+          "title": "Bienvenido a la Ferretería La Universal",
+          "image": {
+            "src": "libreta_juan",
+            "alt": "Cuaderno de ventas abierto, lleno de tachones, recibos pegados y letra difícil de leer.",
+            "caption": "La libreta de ventas de don Juan: tachones, recibos pegados y una letra que solo él entiende."
+          },
+          "body": [
+            {
+              "t": "p",
+              "x": "**Don Juan** es el dueño de la **Ferretería La Universal**. Hace años anota todas las ventas en un cuaderno. Cuadrar la caja le toma horas, se le pierden recibos y nadie más entiende su letra."
+            },
+            {
+              "t": "p",
+              "x": "En este curso vas a ayudarle a pasar ese cuaderno a una **hoja de cálculo**, paso a paso y con ejemplos reales de su negocio. Al terminar podrás:"
+            },
+            {
+              "t": "ul",
+              "items": [
+                "Registrar ventas de forma ordenada y fácil de leer.",
+                "Hacer que el computador sume y calcule por ti.",
+                "Resumir las ventas por categoría y hacer gráficos.",
+                "Limpiar datos mal escritos y evitar errores."
+              ]
+            },
+            {
+              "t": "tip",
+              "x": "Cada unidad termina con una **evaluación corta**. Para aprobar el curso necesitas un promedio de **70 %** o más, y puedes repetir las evaluaciones las veces que quieras."
+            }
+          ]
+        },
+        {
+          "id": "u0-excel-calc",
+          "title": "Excel y Calc: ¿cuál es la diferencia?",
+          "body": [
+            {
+              "t": "p",
+              "x": "Seguramente has oído hablar de **Excel**, la hoja de cálculo de la suite **Microsoft Office** (hoy Microsoft 365). Este curso es un viaje práctico para usar **LibreOffice Calc**, la hoja de cálculo oficial de **LibreOffice**, el proyecto ofimático multiplataforma de código abierto."
+            },
+            {
+              "t": "table",
+              "head": [
+                "",
+                "Microsoft Excel",
+                "LibreOffice Calc"
+              ],
+              "rows": [
+                [
+                  "¿Qué es?",
+                  "La hoja de cálculo de Microsoft Office / Microsoft 365",
+                  "La hoja de cálculo oficial de LibreOffice"
+                ],
+                [
+                  "Costo",
+                  "Licencia o suscripción paga",
+                  "Gratis, sin licencias ni suscripciones"
+                ],
+                [
+                  "Sistemas",
+                  "Windows, macOS y web",
+                  "Windows, Linux y macOS"
+                ],
+                [
+                  "Código",
+                  "Cerrado (privativo)",
+                  "Abierto: cualquiera puede revisarlo y mejorarlo"
+                ],
+                [
+                  "Formato propio",
+                  "`.xlsx`",
+                  "`.ods`, y también abre y guarda `.xlsx`"
+                ]
+              ]
+            },
+            {
+              "t": "p",
+              "x": "LibreOffice lo desarrolla una comunidad mundial y lo respalda **The Document Foundation**, una fundación sin ánimo de lucro. Además de Calc incluye Writer (textos) e Impress (presentaciones), entre otros."
+            },
+            {
+              "t": "tip",
+              "x": "Lo que aprendas aquí también te sirve en Excel: filas, columnas, fórmulas y funciones como `=SUMA()` funcionan casi igual en los dos programas."
+            }
+          ]
+        },
+        {
+          "id": "u0-descarga",
+          "title": "Descarga LibreOffice, gratis y seguro",
+          "image": {
+            "src": "web_descarga_windows",
+            "alt": "Página oficial de descarga de LibreOffice con el sistema operativo Windows elegido y el botón verde DESCARGAR.",
+            "caption": "Página oficial es.libreoffice.org/descarga: elige tu sistema operativo y pulsa DESCARGAR."
+          },
+          "body": [
+            {
+              "t": "steps",
+              "items": [
+                "Abre tu navegador y entra a la página oficial: **es.libreoffice.org/descarga**",
+                "La página suele detectar tu sistema. Si no, en **Sistema operativo** elige **Windows** o **Linux**.",
+                "Pulsa el botón verde **DESCARGAR**.",
+                "Guarda el archivo. Es grande (varios cientos de megas), así que puede tardar según tu conexión."
+              ]
+            },
+            {
+              "t": "warn",
+              "x": "Descarga LibreOffice **solo desde la página oficial**. Otras páginas pueden ofrecer copias con publicidad o virus, o cobrarte por algo que es gratis."
+            },
+            {
+              "t": "note",
+              "x": "La página ofrece dos versiones: la más reciente y una anterior, pensada para quien prefiere máxima estabilidad. Cualquiera sirve para este curso; las capturas son de LibreOffice 25.8."
+            }
+          ]
+        },
+        {
+          "id": "u0-windows",
+          "title": "Instalar en Windows",
+          "body": [
+            {
+              "t": "steps",
+              "items": [
+                "Abre la carpeta **Descargas** y haz doble clic en el archivo que termina en **.msi** (por ejemplo `LibreOffice_26.8.0_Win_x86-64.msi`).",
+                "En la ventana de bienvenida pulsa **Siguiente**.",
+                "Elige la instalación **Típica** y pulsa **Siguiente**.",
+                "Si quieres, marca **Crear un acceso directo en el escritorio**. Luego pulsa **Instalar**.",
+                "Windows preguntará si permites que la aplicación haga cambios en el equipo: responde **Sí**.",
+                "Espera a que termine y pulsa **Finalizar**."
+              ]
+            },
+            {
+              "t": "p",
+              "x": "**Para abrir Calc:** menú **Inicio** → escribe «Calc» → **LibreOffice Calc**."
+            },
+            {
+              "t": "tip",
+              "x": "El instalador para Windows ya trae el español. Si LibreOffice se abre en otro idioma, ve a [[Herramientas ▸ Opciones…]] (en inglés: [[Tools ▸ Options…]]), entra a la sección de idiomas y elige **Español** para la interfaz."
+            }
+          ]
+        },
+        {
+          "id": "u0-linux",
+          "title": "Instalar en Linux",
+          "image": {
+            "src": "web_descarga_linux",
+            "alt": "Página oficial de descarga de LibreOffice mostrando paquetes para Linux en formatos RPM y DEB.",
+            "caption": "En Linux la página ofrece paquetes .rpm y .deb, pero es más fácil usar la tienda de aplicaciones de tu distribución."
+          },
+          "body": [
+            {
+              "t": "p",
+              "x": "En muchas distribuciones (Ubuntu, Linux Mint, Fedora…) LibreOffice **ya viene instalado**: búscalo en el menú de aplicaciones como **LibreOffice Calc**."
+            },
+            {
+              "t": "p",
+              "x": "Si no lo tienes, lo más sencillo es la **tienda de aplicaciones** (Software o Centro de software): busca «LibreOffice» y pulsa **Instalar**. También puedes usar la terminal:"
+            },
+            {
+              "t": "code",
+              "label": "Ubuntu, Debian, Linux Mint",
+              "x": "sudo apt install libreoffice-calc libreoffice-l10n-es"
+            },
+            {
+              "t": "code",
+              "label": "Fedora",
+              "x": "sudo dnf install libreoffice-calc libreoffice-langpack-es"
+            },
+            {
+              "t": "code",
+              "label": "Cualquier distribución (Flatpak)",
+              "x": "flatpak install flathub org.libreoffice.LibreOffice"
+            },
+            {
+              "t": "tip",
+              "x": "Los paquetes `l10n-es` y `langpack-es` ponen los menús en español."
+            }
+          ]
+        },
+        {
+          "id": "u0-ventana",
+          "title": "Conoce la ventana de Calc",
+          "image": {
+            "src": "u0_ventana_calc",
+            "alt": "Ventana de LibreOffice Calc con ocho zonas numeradas: menús, barras de herramientas, cuadro de nombre, barra de fórmulas, celda activa, pestañas de hojas, barra de estado y barra lateral.",
+            "caption": "La ventana de LibreOffice Calc 25.8 en español, con sus partes numeradas."
+          },
+          "body": [
+            {
+              "t": "legend",
+              "items": [
+                "**Barra de menús**: todas las opciones del programa (Archivo, Editar, Datos…).",
+                "**Barras de herramientas**: botones rápidos para guardar, poner negrita, moneda…",
+                "**Cuadro de nombre**: dice en qué celda estás, por ejemplo A1.",
+                "**Barra de fórmulas**: muestra y edita el contenido de la celda.",
+                "**Celda activa**: la celda seleccionada, con el borde resaltado.",
+                "**Pestañas de hojas**: un archivo puede tener varias hojas, como las páginas de un cuaderno.",
+                "**Barra de estado**: muestra sumas rápidas de lo que seleccionas y el zum.",
+                "**Barra lateral**: propiedades, estilos, galería y más."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u0-guardar",
+          "title": "Guarda tu trabajo",
+          "body": [
+            {
+              "t": "p",
+              "x": "Guarda seguido para no perder nada: [[Archivo ▸ Guardar]] o {{Ctrl+G}}. Para ponerle otro nombre o formato: [[Archivo ▸ Guardar como…]] o {{Ctrl+Mayús+S}}."
+            },
+            {
+              "t": "warn",
+              "x": "En LibreOffice **en español** algunos atajos cambian: {{Ctrl+G}} guarda, {{Ctrl+N}} pone **negrita** y {{Ctrl+A}} **abre** un archivo. Para seleccionar todo se usa {{Ctrl+E}}."
+            },
+            {
+              "t": "table",
+              "head": [
+                "Formato",
+                "Cuándo usarlo"
+              ],
+              "rows": [
+                [
+                  "`.ods`",
+                  "El formato propio de LibreOffice (estándar abierto OpenDocument). Úsalo en tu trabajo diario."
+                ],
+                [
+                  "`.xlsx`",
+                  "El formato de Excel. Úsalo cuando debas enviar el archivo a alguien que usa Excel."
+                ],
+                [
+                  "`.pdf`",
+                  "Para imprimir o enviar un reporte que nadie debe modificar: [[Archivo ▸ Exportar a PDF…]]"
+                ]
+              ]
+            },
+            {
+              "t": "note",
+              "x": "Si guardas en `.xlsx`, Calc te preguntará si quieres mantener ese formato. Confirma que sí quieres usar el formato de Excel."
+            }
+          ]
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "q": "¿Qué es LibreOffice Calc?",
+            "options": [
+              "La hoja de cálculo oficial de LibreOffice, gratuita y de código abierto",
+              "Una versión pirata de Microsoft Excel",
+              "Un programa que solo funciona con internet",
+              "Un antivirus para Windows"
+            ],
+            "answer": 0,
+            "explain": "Calc es la hoja de cálculo de LibreOffice, el proyecto ofimático de código abierto. Es legal y gratuita, y funciona sin internet."
+          },
+          {
+            "q": "¿Desde dónde es seguro descargar LibreOffice?",
+            "options": [
+              "Desde la página oficial es.libreoffice.org",
+              "Desde cualquier página que aparezca en un anuncio",
+              "Desde un enlace que envió un desconocido por WhatsApp",
+              "No se puede descargar, solo se compra en una tienda"
+            ],
+            "answer": 0,
+            "explain": "Descarga siempre desde la página oficial: así evitas virus, publicidad y cobros falsos."
+          },
+          {
+            "q": "En la ventana de Calc, ¿qué muestra el cuadro de nombre (número 3)?",
+            "image": "u0_ventana_calc",
+            "options": [
+              "La dirección de la celda en la que estás, por ejemplo A1",
+              "El nombre del archivo",
+              "El nombre del usuario del computador",
+              "El resultado de la última suma"
+            ],
+            "answer": 0,
+            "explain": "El cuadro de nombre indica la celda o el rango seleccionado, por ejemplo A1 o E2:E3."
+          },
+          {
+            "q": "En LibreOffice en español, ¿qué atajo de teclado guarda el archivo?",
+            "options": [
+              "{{Ctrl+G}}",
+              "{{Ctrl+A}}",
+              "{{Ctrl+N}}",
+              "{{Ctrl+E}}"
+            ],
+            "answer": 0,
+            "explain": "{{Ctrl+G}} de «Guardar». {{Ctrl+A}} abre, {{Ctrl+N}} pone negrita y {{Ctrl+E}} selecciona todo."
+          },
+          {
+            "q": "Don Juan debe enviar su archivo a un proveedor que solo usa Excel. ¿En qué formato debe guardarlo?",
+            "options": [
+              "`.xlsx`",
+              "`.ods`",
+              "`.txt`",
+              "`.exe`"
+            ],
+            "answer": 0,
+            "explain": "`.xlsx` es el formato de Excel. Calc lo guarda sin problema con [[Archivo ▸ Guardar como…]]."
+          }
+        ]
+      }
+    },
+    {
+      "id": "u1",
+      "label": "Unidad 1",
+      "title": "De la libreta al computador",
+      "icon": "book",
+      "minutes": 35,
+      "skills": [
+        "Organizar datos en filas y columnas",
+        "Aplicar formatos de moneda y fecha",
+        "Dar estilo y legibilidad a una tabla"
+      ],
+      "slides": [
+        {
+          "id": "u1-celdas",
+          "title": "Filas, columnas y celdas",
+          "image": {
+            "src": "u1_celda_activa",
+            "alt": "Hoja de Calc con la celda C3 seleccionada y el cuadro de nombre mostrando C3.",
+            "caption": "La celda C3 está en la columna C y la fila 3. El cuadro de nombre (1) lo confirma."
+          },
+          "body": [
+            {
+              "t": "ul",
+              "items": [
+                "Las **columnas** van de arriba abajo y se nombran con letras: A, B, C…",
+                "Las **filas** van de izquierda a derecha y se nombran con números: 1, 2, 3…",
+                "Una **celda** es el cruce de una columna y una fila. Su nombre es la letra más el número: **C3**."
+              ]
+            },
+            {
+              "t": "tip",
+              "x": "Como en la batalla naval: «C3» dice exactamente dónde está cada dato."
+            }
+          ]
+        },
+        {
+          "id": "u1-regla-oro",
+          "title": "La regla de oro: un dato por celda",
+          "body": [
+            {
+              "t": "p",
+              "x": "En la libreta de don Juan todo va mezclado en una sola línea: «1 sept Pedro 4 cementos 140.000». En Calc, cada tipo de información va en su propia **columna** y cada venta en su propia **fila**:"
+            },
+            {
+              "t": "table",
+              "head": [
+                "Fecha",
+                "Cliente",
+                "Producto",
+                "Categoría",
+                "Vendedor",
+                "Cantidad",
+                "Precio unitario"
+              ],
+              "rows": [
+                [
+                  "01/09/26",
+                  "Pedro Pérez",
+                  "Cemento gris 50 kg",
+                  "Construcción",
+                  "Juan",
+                  "4",
+                  "35000"
+                ],
+                [
+                  "01/09/26",
+                  "Ana Gómez",
+                  "Tornillos drywall x100",
+                  "Tornillería",
+                  "Luz",
+                  "2",
+                  "12000"
+                ]
+              ]
+            },
+            {
+              "t": "ul",
+              "items": [
+                "**Fila 1:** los encabezados, es decir, el título de cada columna.",
+                "**Desde la fila 2:** una venta por fila, sin filas vacías en medio.",
+                "Escribe los números **sin** puntos ni signo $: `35000`. El formato se pone después."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u1-escribir",
+          "title": "Escribir, moverse y corregir",
+          "image": {
+            "src": "u1_datos_crudos",
+            "alt": "Ventas escritas en Calc con columnas angostas, textos cortados y precios sin formato.",
+            "caption": "Los datos ya están en Calc, pero todavía se ven desordenados: textos cortados y precios sin formato."
+          },
+          "body": [
+            {
+              "t": "table",
+              "head": [
+                "Tecla",
+                "Qué hace"
+              ],
+              "rows": [
+                [
+                  "{{Intro}}",
+                  "Confirma lo escrito y baja a la celda de abajo"
+                ],
+                [
+                  "{{Tab}}",
+                  "Confirma y pasa a la celda de la derecha"
+                ],
+                [
+                  "{{F2}}",
+                  "Edita la celda sin borrar lo que tiene"
+                ],
+                [
+                  "{{Supr}}",
+                  "Borra el contenido de la celda"
+                ],
+                [
+                  "{{Ctrl+Z}}",
+                  "Deshace el último cambio"
+                ]
+              ]
+            },
+            {
+              "t": "tip",
+              "x": "Escribe las fechas con barras, por ejemplo `1/9/2026`. Calc las reconoce como fechas y después podrá ordenarlas y compararlas."
+            }
+          ]
+        },
+        {
+          "id": "u1-moneda",
+          "title": "Formato de moneda: de 35000 a $ 35.000,00",
+          "image": {
+            "src": "u1_formato_celdas",
+            "alt": "Diálogo Formato de celdas con la pestaña Números y la categoría Moneda seleccionada.",
+            "caption": "[[Formato ▸ Formato de celdas…]], pestaña Números, categoría Moneda."
+          },
+          "body": [
+            {
+              "t": "steps",
+              "items": [
+                "Selecciona la columna **Precio unitario**: haz clic en la letra **G**.",
+                "Ve a [[Formato ▸ Formato de celdas…]] o haz clic derecho y elige **Formato de celdas…**",
+                "En la pestaña **Números**, elige la categoría **Moneda**.",
+                "Revisa la vista previa y pulsa **Aceptar**."
+              ]
+            },
+            {
+              "t": "note",
+              "x": "El número no cambia, solo cómo se ve: Calc sigue guardando 35000 y puede seguir calculando con él."
+            },
+            {
+              "t": "tip",
+              "x": "Más rápido: el botón de **billetes** de la barra de herramientas aplica el formato de moneda con un clic."
+            }
+          ]
+        },
+        {
+          "id": "u1-legible",
+          "title": "Que todo se lea bien",
+          "image": {
+            "src": "u1_datos_formateados",
+            "alt": "Tabla de ventas con encabezados en negrita, fechas, precios en pesos y columnas ajustadas.",
+            "caption": "Encabezados en negrita, fechas, precios en pesos y columnas con la anchura justa."
+          },
+          "body": [
+            {
+              "t": "ul",
+              "items": [
+                "**Negrita en los encabezados:** selecciona la fila 1 y pulsa {{Ctrl+N}}.",
+                "**Anchura de columnas:** haz doble clic en la línea que separa las letras de dos columnas, o usa [[Formato ▸ Columnas ▸ Anchura óptima…]]",
+                "**Fechas:** si una fecha aparece como número (por ejemplo 46266), aplícale [[Formato ▸ Formato numérico ▸ Fecha]].",
+                "**Encabezados siempre visibles:** [[Ver ▸ Inmovilizar celdas ▸ Inmovilizar primera fila]]."
+              ]
+            },
+            {
+              "t": "note",
+              "x": "Si una celda muestra `###`, no es un error: la columna es muy angosta para el número. Ensánchala."
+            }
+          ]
+        },
+        {
+          "id": "u1-estilo",
+          "title": "Dale estilo a la tabla en un clic",
+          "image": {
+            "src": "u1_autoformato",
+            "alt": "Diálogo Estilos de formato automático con la lista de diseños y una vista previa.",
+            "caption": "[[Formato ▸ Estilos de formato automático…]]: elige un diseño y mira la vista previa."
+          },
+          "body": [
+            {
+              "t": "steps",
+              "items": [
+                "Selecciona toda la tabla, desde A1 hasta la última venta.",
+                "Ve a [[Formato ▸ Estilos de formato automático…]]",
+                "Elige un diseño, por ejemplo **Lista azul**, y pulsa **Aceptar**."
+              ]
+            },
+            {
+              "t": "warn",
+              "x": "Este estilo también puede cambiar el formato de los números. Si después las fechas o los precios se ven raros, vuelve a aplicarles **Fecha** y **Moneda**."
+            },
+            {
+              "t": "note",
+              "x": "Si vienes de Excel, esto se parece a «Dar formato como tabla»."
+            }
+          ]
+        },
+        {
+          "id": "u1-resultado",
+          "title": "Resultado: la libreta ya es una tabla",
+          "image": {
+            "src": "u1_tabla_estilo",
+            "alt": "Tabla de ventas de la ferretería con estilo Lista azul, fechas y precios en pesos.",
+            "caption": "Las ventas de don Juan con estilo, formato y la primera fila inmovilizada."
+          },
+          "body": [
+            {
+              "t": "p",
+              "x": "¡Lo lograste! Guarda el archivo como `ventas_la_universal.ods` con [[Archivo ▸ Guardar como…]]."
+            },
+            {
+              "t": "download",
+              "file": "practica_u1_libreta.ods",
+              "label": "Práctica de la Unidad 1",
+              "desc": "Ventas de la semana sin formato. Aplica negrita, anchura de columnas, fechas y moneda."
+            }
+          ]
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "q": "¿Cómo se llama la celda que está en la columna D y la fila 7?",
+            "options": [
+              "D7",
+              "7D",
+              "D-7",
+              "F7"
+            ],
+            "answer": 0,
+            "explain": "Primero va la letra de la columna y luego el número de la fila: D7."
+          },
+          {
+            "q": "¿Cómo debe escribir don Juan un precio de treinta y cinco mil pesos?",
+            "options": [
+              "`35000`, y después aplicar formato de moneda",
+              "`$35.000` escrito a mano",
+              "«treinta y cinco mil»",
+              "«35 mil»"
+            ],
+            "answer": 0,
+            "explain": "Escribe solo el número. El formato de moneda se encarga del signo $ y de los puntos, y Calc puede seguir calculando."
+          },
+          {
+            "q": "Una celda muestra `###`. ¿Qué significa?",
+            "options": [
+              "La columna es muy angosta para mostrar el número",
+              "El dato se borró",
+              "El archivo tiene un virus",
+              "La fórmula está mal escrita"
+            ],
+            "answer": 0,
+            "explain": "`###` indica que el número no cabe. Ensancha la columna con doble clic en el borde de su letra."
+          },
+          {
+            "q": "¿Dónde se aplica el formato de moneda?",
+            "options": [
+              "[[Formato ▸ Formato de celdas…]], pestaña Números, categoría Moneda",
+              "[[Datos ▸ Ordenar...]]",
+              "[[Insertar ▸ Gráfico…]]",
+              "[[Herramientas ▸ Ortografía…]]"
+            ],
+            "answer": 0,
+            "explain": "En [[Formato ▸ Formato de celdas…]] eliges cómo se ve un número: moneda, fecha, porcentaje…"
+          },
+          {
+            "q": "¿Qué debe ir en la fila 1 de la tabla de ventas?",
+            "options": [
+              "Los encabezados: Fecha, Cliente, Producto…",
+              "La venta más grande del mes",
+              "El total del mes",
+              "Nada: debe quedar vacía"
+            ],
+            "answer": 0,
+            "explain": "La fila 1 lleva los encabezados. Así Calc sabe qué hay en cada columna para ordenar, filtrar y resumir."
+          }
+        ]
+      }
+    },
+    {
+      "id": "u2",
+      "label": "Unidad 2",
+      "title": "Que el computador calcule por mí",
+      "icon": "calculator",
+      "minutes": 40,
+      "skills": [
+        "Escribir fórmulas con referencias",
+        "Usar SUMA, PROMEDIO, MAX, MIN y CONTAR",
+        "Filtrar con el filtro automático"
+      ],
+      "slides": [
+        {
+          "id": "u2-igual",
+          "title": "El signo igual (=) lo cambia todo",
+          "image": {
+            "src": "u2_formula_simple",
+            "alt": "Dos celdas: una con el texto 4*35000 y otra con la fórmula =4*35000 que muestra 140000.",
+            "caption": "Sin el signo igual, Calc guarda texto. Con =4*35000 calcula 140000 (ver barra de fórmulas)."
+          },
+          "body": [
+            {
+              "t": "p",
+              "x": "Para que Calc haga una cuenta, lo que escribes en la celda debe empezar con **=**."
+            },
+            {
+              "t": "ul",
+              "items": [
+                "`4*35000` → Calc lo guarda como texto.",
+                "`=4*35000` → Calc calcula y muestra **140000**."
+              ]
+            },
+            {
+              "t": "table",
+              "head": [
+                "Operación",
+                "Signo",
+                "Ejemplo"
+              ],
+              "rows": [
+                [
+                  "Sumar",
+                  "`+`",
+                  "`=10+5`"
+                ],
+                [
+                  "Restar",
+                  "`-`",
+                  "`=10-5`"
+                ],
+                [
+                  "Multiplicar",
+                  "`*`",
+                  "`=10*5`"
+                ],
+                [
+                  "Dividir",
+                  "`/`",
+                  "`=10/5`"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u2-referencias",
+          "title": "Fórmulas con celdas: Total = Cantidad × Precio",
+          "image": {
+            "src": "u2_formula_referencias",
+            "alt": "Tabla de ventas con la celda H2 seleccionada y la fórmula =F2*G2 en la barra de fórmulas.",
+            "caption": "En H2, la fórmula =F2*G2 multiplica la cantidad por el precio unitario."
+          },
+          "body": [
+            {
+              "t": "steps",
+              "items": [
+                "Escribe el encabezado **Total** en la celda H1.",
+                "Haz clic en H2 y escribe `=F2*G2`",
+                "Pulsa {{Intro}}: aparece **$ 140.000,00**."
+              ]
+            },
+            {
+              "t": "tip",
+              "x": "La gran ventaja: si Pedro compra 5 bultos en vez de 4, cambias solo la cantidad y el total se recalcula solo."
+            },
+            {
+              "t": "note",
+              "x": "En vez de escribir `F2`, también puedes hacer clic en la celda F2 mientras escribes la fórmula."
+            }
+          ]
+        },
+        {
+          "id": "u2-copiar",
+          "title": "Copia la fórmula a todas las ventas",
+          "image": {
+            "src": "u2_copiar_formula",
+            "alt": "Columna Total con la fórmula copiada hasta la fila 25; la barra de estado muestra la suma de la selección.",
+            "caption": "La fórmula copiada hasta H25. Abajo, la barra de estado ya muestra la suma de lo seleccionado."
+          },
+          "body": [
+            {
+              "t": "steps",
+              "items": [
+                "Selecciona la celda H2.",
+                "Pon el puntero sobre el **cuadrito** de la esquina inferior derecha de la celda: el puntero se vuelve una cruz.",
+                "Arrastra hacia abajo hasta la última venta, o haz **doble clic** en el cuadrito."
+              ]
+            },
+            {
+              "t": "p",
+              "x": "Calc ajusta la fórmula en cada fila: en H3 queda `=F3*G3`, en H4 `=F4*G4`… Esto se llama **referencia relativa**."
+            },
+            {
+              "t": "tip",
+              "x": "Otra forma: selecciona H2:H25 y pulsa {{Ctrl+D}} para rellenar hacia abajo."
+            }
+          ]
+        },
+        {
+          "id": "u2-funciones",
+          "title": "Las 5 funciones que más vas a usar",
+          "image": {
+            "src": "u2_funciones",
+            "alt": "Resumen del período con total vendido, venta promedio, venta más alta, venta más baja y número de ventas.",
+            "caption": "Un resumen hecho con funciones. En la barra de fórmulas: =SUMA(H2:H25)."
+          },
+          "body": [
+            {
+              "t": "table",
+              "head": [
+                "Función",
+                "Qué calcula",
+                "Ejemplo"
+              ],
+              "rows": [
+                [
+                  "`SUMA`",
+                  "El total vendido",
+                  "`=SUMA(H2:H25)`"
+                ],
+                [
+                  "`PROMEDIO`",
+                  "La venta promedio",
+                  "`=PROMEDIO(H2:H25)`"
+                ],
+                [
+                  "`MAX`",
+                  "La venta más alta",
+                  "`=MAX(H2:H25)`"
+                ],
+                [
+                  "`MIN`",
+                  "La venta más baja",
+                  "`=MIN(H2:H25)`"
+                ],
+                [
+                  "`CONTAR`",
+                  "Cuántas celdas tienen números",
+                  "`=CONTAR(H2:H25)`"
+                ]
+              ]
+            },
+            {
+              "t": "p",
+              "x": "`H2:H25` es un **rango**: todas las celdas desde H2 hasta H25."
+            },
+            {
+              "t": "warn",
+              "x": "En LibreOffice en español, las partes de una función se separan con **punto y coma**: `=SI(H2>100000;\"Grande\";\"Normal\")`."
+            }
+          ]
+        },
+        {
+          "id": "u2-autosuma",
+          "title": "Autosuma: el botón Σ",
+          "image": {
+            "src": "u2_autosuma",
+            "alt": "Barra de fórmulas con el botón Sigma resaltado.",
+            "caption": "El botón Σ está junto a la barra de fórmulas."
+          },
+          "body": [
+            {
+              "t": "steps",
+              "items": [
+                "Haz clic en la celda vacía justo debajo de los números que quieres sumar.",
+                "Pulsa el botón **Σ**: Calc escribe `=SUMA()` y propone el rango de arriba.",
+                "Revisa que el rango sea el correcto y pulsa {{Intro}}."
+              ]
+            },
+            {
+              "t": "tip",
+              "x": "La flechita junto a Σ ofrece también Promedio, Mínimo, Máximo y Contar."
+            }
+          ]
+        },
+        {
+          "id": "u2-filtro",
+          "title": "Filtro automático: ver solo lo que te interesa",
+          "image": {
+            "src": "u2_filtro",
+            "alt": "Tabla de ventas filtrada: solo se ven cinco ventas de la categoría Pinturas.",
+            "caption": "Tabla filtrada por Categoría = Pinturas: las demás filas no se borraron, solo están ocultas."
+          },
+          "body": [
+            {
+              "t": "steps",
+              "items": [
+                "Haz clic en cualquier celda de la tabla.",
+                "Ve a [[Datos ▸ Filtro automático]] o pulsa {{Ctrl+Mayús+L}}.",
+                "Aparecen flechitas en los encabezados. Abre la de **Categoría**.",
+                "Deja marcada solo **Pinturas** y pulsa **Aceptar**."
+              ]
+            },
+            {
+              "t": "note",
+              "x": "Mira los números de fila: saltan de 1 a 4, 5, 10, 16 y 22. Esa es la señal de que hay filas ocultas. La barra de estado dice «Se encontraron 5 de 24 registros»."
+            },
+            {
+              "t": "tip",
+              "x": "Filtrar no es borrar, es esconder. Para ver todo otra vez, abre la flechita y marca **Todo**."
+            }
+          ]
+        },
+        {
+          "id": "u2-errores",
+          "title": "Cuando algo sale mal: errores comunes",
+          "image": {
+            "src": "u2_error_nombre",
+            "alt": "Celda con el error #¿NOMBRE? porque la fórmula dice summa en vez de SUMA.",
+            "caption": "#¿NOMBRE? aparece porque la función está mal escrita: summa en vez de SUMA. Calc deja en minúsculas los nombres que no reconoce."
+          },
+          "body": [
+            {
+              "t": "table",
+              "head": [
+                "Error",
+                "Qué significa",
+                "Cómo arreglarlo"
+              ],
+              "rows": [
+                [
+                  "`#¿NOMBRE?`",
+                  "Calc no reconoce el nombre de la función",
+                  "Revisa la ortografía: SUMA, PROMEDIO…"
+                ],
+                [
+                  "`#¡DIV/0!`",
+                  "Se está dividiendo entre cero o entre una celda vacía",
+                  "Revisa el número por el que divides"
+                ],
+                [
+                  "`#¡VALOR!`",
+                  "Se opera con texto como si fuera un número",
+                  "Revisa que la celda tenga solo números"
+                ],
+                [
+                  "`###`",
+                  "La columna es muy angosta",
+                  "Ensancha la columna"
+                ]
+              ]
+            },
+            {
+              "t": "download",
+              "file": "practica_u2_formulas.ods",
+              "label": "Práctica de la Unidad 2",
+              "desc": "Calcula la columna Total y completa el resumen con SUMA, PROMEDIO, MAX, MIN y CONTAR."
+            }
+          ]
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "q": "¿Qué debe escribir don Juan para que Calc multiplique 3 por 12000?",
+            "options": [
+              "`=3*12000`",
+              "`3x12000`",
+              "`3*12000`",
+              "`=3x12000`"
+            ],
+            "answer": 0,
+            "explain": "Toda fórmula empieza con `=` y la multiplicación se escribe con asterisco `*`."
+          },
+          {
+            "q": "En H2 está la fórmula `=F2*G2`. Si la copias a H3, ¿qué fórmula queda en H3?",
+            "image": "u2_formula_referencias",
+            "options": [
+              "`=F3*G3`",
+              "`=F2*G2`",
+              "`=F3*G2`",
+              "`=H3*H3`"
+            ],
+            "answer": 0,
+            "explain": "Las referencias relativas se ajustan a la fila: al bajar una fila, F2 pasa a F3 y G2 a G3."
+          },
+          {
+            "q": "¿Qué fórmula da el total vendido del rango H2:H25?",
+            "options": [
+              "`=SUMA(H2:H25)`",
+              "`=PROMEDIO(H2:H25)`",
+              "`=CONTAR(H2:H25)`",
+              "`=MAX(H2:H25)`"
+            ],
+            "answer": 0,
+            "explain": "SUMA suma todo el rango. PROMEDIO da el promedio, CONTAR cuenta y MAX da el valor más alto."
+          },
+          {
+            "q": "Don Juan activa el filtro automático y deja visible solo «Pinturas». ¿Qué pasa con las demás ventas?",
+            "options": [
+              "Quedan ocultas, pero siguen en el archivo",
+              "Se borran para siempre",
+              "Se mueven a otra hoja",
+              "Se convierten en cero"
+            ],
+            "answer": 0,
+            "explain": "Filtrar no es borrar, es esconder. Al quitar el filtro vuelven a aparecer."
+          },
+          {
+            "q": "Una celda muestra `#¿NOMBRE?`. ¿Cuál es la causa más probable?",
+            "options": [
+              "El nombre de la función está mal escrito",
+              "La columna es muy angosta",
+              "El archivo está dañado",
+              "No hay conexión a internet"
+            ],
+            "answer": 0,
+            "explain": "Calc no reconoce la función. Revisa la ortografía, por ejemplo SUMA en vez de SUMMA."
+          }
+        ]
+      }
+    },
+    {
+      "id": "u3",
+      "label": "Unidad 3",
+      "title": "Ordenar, resumir y graficar",
+      "icon": "chart",
+      "minutes": 40,
+      "skills": [
+        "Ordenar y calcular subtotales",
+        "Resumir con SUMAR.SI",
+        "Crear gráficos de columnas y circulares"
+      ],
+      "slides": [
+        {
+          "id": "u3-ordenar",
+          "title": "Primero, ordenar",
+          "image": {
+            "src": "u3_ordenar_dialogo",
+            "alt": "Diálogo Ordenar con la clave de ordenación 1 en la columna Categoría, orden ascendente.",
+            "caption": "[[Datos ▸ Ordenar...]]: clave 1 = Categoría, en orden ascendente."
+          },
+          "body": [
+            {
+              "t": "steps",
+              "items": [
+                "Haz clic en una celda **dentro** de la tabla.",
+                "Ve a [[Datos ▸ Ordenar...]]",
+                "En **Clave de ordenación 1** elige **Categoría** y **Ascendente** (de la A a la Z).",
+                "Pulsa **Aceptar**."
+              ]
+            },
+            {
+              "t": "warn",
+              "x": "No selecciones una sola columna para ordenar: los datos de cada venta se mezclarían. Con una celda dentro de la tabla, Calc ordena las filas completas."
+            },
+            {
+              "t": "tip",
+              "x": "Para un orden rápido usa [[Datos ▸ Orden ascendente]] o [[Datos ▸ Orden descendente]]."
+            }
+          ]
+        },
+        {
+          "id": "u3-ordenado",
+          "title": "Ventas agrupadas por categoría",
+          "image": {
+            "src": "u3_ordenado",
+            "alt": "Tabla de ventas ordenada por categoría: primero Construcción, luego Eléctricos, Herramientas…",
+            "caption": "Ahora todas las ventas de cada categoría están juntas."
+          },
+          "body": [
+            {
+              "t": "p",
+              "x": "Ordenar es el **paso obligatorio** antes de sacar subtotales: Calc necesita que las filas de una misma categoría estén una debajo de la otra."
+            }
+          ]
+        },
+        {
+          "id": "u3-subtotales",
+          "title": "Subtotales automáticos",
+          "image": {
+            "src": "u3_subtotales_dialogo",
+            "alt": "Diálogo Subtotales: agrupar por Categoría, calcular subtotales para Total con la función Suma.",
+            "caption": "[[Datos ▸ Subtotales...]]: agrupar por Categoría y sumar la columna Total."
+          },
+          "body": [
+            {
+              "t": "steps",
+              "items": [
+                "Con la tabla ya ordenada por Categoría, ve a [[Datos ▸ Subtotales...]]",
+                "En **Agrupar por** elige **Categoría**.",
+                "En **Calcular subtotales para** marca **Total**.",
+                "En **Usar la función** deja **Suma** y pulsa **Aceptar**."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u3-esquema",
+          "title": "Leer el resultado: los niveles 1, 2 y 3",
+          "image": {
+            "src": "u3_subtotales_resultado",
+            "alt": "Tabla con una fila de suma debajo de cada categoría y botones de esquema 1, 2 y 3 a la izquierda.",
+            "caption": "Calc insertó una fila de suma debajo de cada categoría y un total general al final."
+          },
+          "body": [
+            {
+              "t": "p",
+              "x": "A la izquierda aparecen los botones de **esquema**:"
+            },
+            {
+              "t": "ul",
+              "items": [
+                "**1**: solo el total general.",
+                "**2**: el total de cada categoría (ideal para una reunión).",
+                "**3**: todo el detalle."
+              ]
+            },
+            {
+              "t": "img",
+              "src": "u3_subtotales_nivel2",
+              "alt": "Vista con el nivel 2 del esquema: solo se ven los subtotales de cada categoría.",
+              "caption": "Con el botón 2 ves solo los subtotales por categoría."
+            },
+            {
+              "t": "tip",
+              "x": "Para quitar los subtotales, vuelve a [[Datos ▸ Subtotales...]] y pulsa **Quitar**."
+            }
+          ]
+        },
+        {
+          "id": "u3-sumarsi",
+          "title": "Un resumen que se actualiza solo: SUMAR.SI",
+          "image": {
+            "src": "u3_sumar_si",
+            "alt": "Hoja Resumen con el total vendido por categoría calculado con SUMAR.SI.",
+            "caption": "Hoja Resumen: cada fila suma el Total de la hoja Ventas solo para su categoría."
+          },
+          "body": [
+            {
+              "t": "p",
+              "x": "`SUMAR.SI` suma solo las filas que cumplen una condición:"
+            },
+            {
+              "t": "code",
+              "label": "Forma general",
+              "x": "=SUMAR.SI(dónde_buscar; qué_buscar; qué_sumar)"
+            },
+            {
+              "t": "code",
+              "label": "En la hoja Resumen, celda B2",
+              "x": "=SUMAR.SI($Ventas.$D$2:$D$25;A2;$Ventas.$H$2:$H$25)"
+            },
+            {
+              "t": "ul",
+              "items": [
+                "`$Ventas.$D$2:$D$25`: la columna Categoría de la hoja Ventas.",
+                "`A2`: la categoría que buscamos (Construcción).",
+                "`$Ventas.$H$2:$H$25`: la columna Total, que es la que se suma."
+              ]
+            },
+            {
+              "t": "tip",
+              "x": "Los signos `$` fijan el rango para que no se mueva al copiar la fórmula hacia abajo (**referencia absoluta**). Pulsa {{F4}} mientras escribes para ponerlos rápido."
+            },
+            {
+              "t": "note",
+              "x": "Calc nombra otra hoja con un punto: `$Ventas.D2`. En Excel se escribe `Ventas!D2`."
+            }
+          ]
+        },
+        {
+          "id": "u3-grafico",
+          "title": "Tu primer gráfico",
+          "image": {
+            "src": "u3_grafico_asistente",
+            "alt": "Asistente para gráficos con el tipo Columna seleccionado.",
+            "caption": "[[Insertar ▸ Gráfico…]] abre el asistente: elige Columna y pulsa Finalizar."
+          },
+          "body": [
+            {
+              "t": "steps",
+              "items": [
+                "Selecciona el resumen **con** sus encabezados (A1:B7).",
+                "Ve a [[Insertar ▸ Gráfico…]]",
+                "Elige **Columna** y pulsa **Finalizar**.",
+                "Haz doble clic en el gráfico y luego en el título para escribir uno claro, como «Ventas por categoría»."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u3-tipos",
+          "title": "¿Qué gráfico usar?",
+          "image": {
+            "src": "u3_grafico_columnas",
+            "alt": "Gráfico de columnas con las ventas por categoría.",
+            "caption": "Columnas: compara cuánto vendió cada categoría."
+          },
+          "body": [
+            {
+              "t": "table",
+              "head": [
+                "Tipo",
+                "Úsalo para",
+                "Ejemplo en La Universal"
+              ],
+              "rows": [
+                [
+                  "Columnas o barras",
+                  "Comparar cantidades",
+                  "Ventas por categoría"
+                ],
+                [
+                  "Circular",
+                  "Ver partes de un todo (pocas categorías)",
+                  "Qué porcentaje del mes es cada categoría"
+                ],
+                [
+                  "Líneas",
+                  "Ver cambios en el tiempo",
+                  "Ventas día a día"
+                ]
+              ]
+            },
+            {
+              "t": "img",
+              "src": "u3_grafico_circular",
+              "alt": "Gráfico circular con el porcentaje de ventas de cada categoría.",
+              "caption": "Circular: cada porción es una parte de la venta total."
+            },
+            {
+              "t": "tip",
+              "x": "Si cambias un número de la tabla, el gráfico se actualiza solo."
+            },
+            {
+              "t": "download",
+              "file": "practica_u3_resumen.ods",
+              "label": "Práctica de la Unidad 3",
+              "desc": "Ordena las ventas, saca subtotales por categoría, arma el resumen con SUMAR.SI y haz un gráfico."
+            }
+          ]
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "q": "¿Qué debe hacer don Juan antes de usar [[Datos ▸ Subtotales...]]?",
+            "options": [
+              "Ordenar la tabla por la columna que quiere agrupar",
+              "Borrar los encabezados",
+              "Insertar un gráfico",
+              "Cambiar el tipo de letra"
+            ],
+            "answer": 0,
+            "explain": "Los subtotales agrupan filas seguidas. Si no ordenas primero, la misma categoría aparece partida en varios grupos."
+          },
+          {
+            "q": "En el esquema de subtotales, ¿qué botón muestra solo el total de cada categoría?",
+            "image": "u3_subtotales_resultado",
+            "options": [
+              "2",
+              "1",
+              "3",
+              "Ninguno: hay que borrar filas"
+            ],
+            "answer": 0,
+            "explain": "El nivel 1 muestra solo el total general, el 2 los subtotales por categoría y el 3 todo el detalle."
+          },
+          {
+            "q": "¿Qué hace `=SUMAR.SI(D2:D25;\"Pinturas\";H2:H25)`?",
+            "options": [
+              "Suma los totales solo de las ventas de Pinturas",
+              "Cuenta cuántas pinturas hay",
+              "Suma todas las ventas",
+              "Busca la palabra Pinturas y la borra"
+            ],
+            "answer": 0,
+            "explain": "Busca «Pinturas» en D2:D25 y suma los valores de H2:H25 de esas mismas filas."
+          },
+          {
+            "q": "Don Juan quiere ver qué porcentaje del mes representa cada categoría. ¿Qué gráfico le conviene?",
+            "options": [
+              "Circular",
+              "Líneas",
+              "Dispersión (XY)",
+              "Ninguno: no se puede graficar"
+            ],
+            "answer": 0,
+            "explain": "El gráfico circular muestra partes de un todo. Las líneas sirven para ver cambios en el tiempo."
+          },
+          {
+            "q": "¿Desde qué menú se inserta un gráfico?",
+            "options": [
+              "[[Insertar ▸ Gráfico…]]",
+              "[[Datos ▸ Filtro automático]]",
+              "[[Formato ▸ Columnas ▸ Anchura óptima…]]",
+              "[[Archivo ▸ Guardar]]"
+            ],
+            "answer": 0,
+            "explain": "Selecciona los datos con encabezados y ve a [[Insertar ▸ Gráfico…]]."
+          }
+        ]
+      }
+    },
+    {
+      "id": "u4",
+      "label": "Unidad 4",
+      "title": "Limpiando el desastre",
+      "icon": "broom",
+      "minutes": 40,
+      "skills": [
+        "Limpiar textos con ESPACIOS y NOMPROPIO",
+        "Separar texto en columnas y quitar duplicados",
+        "Prevenir errores con listas de validez"
+      ],
+      "slides": [
+        {
+          "id": "u4-sucios",
+          "title": "Datos sucios, resultados equivocados",
+          "image": {
+            "src": "u4_datos_sucios",
+            "alt": "Lista de clientes escritos de muchas maneras: con espacios de más y mayúsculas mezcladas.",
+            "caption": "Los mismos clientes escritos de muchas maneras: espacios de más y mayúsculas mezcladas."
+          },
+          "body": [
+            {
+              "t": "p",
+              "x": "Luz y Andrés también anotan ventas, y cada uno escribe distinto. Para Calc, «pedro PÉREZ », « pedro pérez» y «Pedro Pérez» son **tres clientes diferentes**: los filtros, los subtotales y `SUMAR.SI` darán resultados equivocados."
+            },
+            {
+              "t": "ul",
+              "items": [
+                "Espacios al inicio, al final o dobles.",
+                "MAYÚSCULAS y minúsculas mezcladas.",
+                "Nombre y apellido en una sola celda cuando los necesitas separados.",
+                "Clientes repetidos."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u4-espacios",
+          "title": "ESPACIOS(): la escoba de los espacios",
+          "image": {
+            "src": "u4_espacios",
+            "alt": "Columna Sin espacios con la fórmula =ESPACIOS(A2) en la barra de fórmulas.",
+            "caption": "En C2, la fórmula =ESPACIOS(A2) quita los espacios de más."
+          },
+          "body": [
+            {
+              "t": "p",
+              "x": "`=ESPACIOS(A2)` quita los espacios del inicio y del final, y deja un solo espacio entre palabras. Escríbela en C2 y cópiala hacia abajo."
+            },
+            {
+              "t": "warn",
+              "x": "En LibreOffice en español esta función se llama **ESPACIOS**. Si en un tutorial ves otro nombre (por ejemplo `TRIM`, en inglés), en Calc en español usa `ESPACIOS`; de lo contrario verás `#¿NOMBRE?`."
+            }
+          ]
+        },
+        {
+          "id": "u4-mayusculas",
+          "title": "Mayúsculas en su lugar",
+          "image": {
+            "src": "u4_nompropio",
+            "alt": "Columna Nombre limpio con la fórmula =NOMPROPIO(ESPACIOS(A2)).",
+            "caption": "=NOMPROPIO(ESPACIOS(A2)) deja cada nombre con mayúscula inicial y sin espacios de más."
+          },
+          "body": [
+            {
+              "t": "table",
+              "head": [
+                "Función",
+                "Resultado",
+                "Ejemplo"
+              ],
+              "rows": [
+                [
+                  "`=NOMPROPIO(A2)`",
+                  "Mayúscula inicial en cada palabra",
+                  "pedro PÉREZ → Pedro Pérez"
+                ],
+                [
+                  "`=MAYUSC(A2)`",
+                  "Todo en mayúsculas",
+                  "Pedro → PEDRO"
+                ],
+                [
+                  "`=MINUSC(A2)`",
+                  "Todo en minúsculas",
+                  "PEDRO → pedro"
+                ]
+              ]
+            },
+            {
+              "t": "tip",
+              "x": "Puedes **combinar** funciones: `=NOMPROPIO(ESPACIOS(A2))` primero quita los espacios y luego arregla las mayúsculas."
+            }
+          ]
+        },
+        {
+          "id": "u4-valores",
+          "title": "Cambia las fórmulas por el texto limpio",
+          "image": {
+            "src": "u4_pegado_especial",
+            "alt": "Diálogo Pegado especial con el botón Solo valores.",
+            "caption": "Pegado especial → «Solo valores»: pega el resultado, no la fórmula."
+          },
+          "body": [
+            {
+              "t": "p",
+              "x": "La columna limpia depende de la sucia: si borras la columna A, las fórmulas fallan. Al terminar, convierte las fórmulas en texto:"
+            },
+            {
+              "t": "steps",
+              "items": [
+                "Selecciona las celdas limpias y cópialas con {{Ctrl+C}}.",
+                "Haz clic donde quieres el resultado.",
+                "Abre [[Editar ▸ Pegado especial… ▸ Pegado especial...]] o pulsa {{Ctrl+Mayús+V}}.",
+                "Pulsa **Solo valores**."
+              ]
+            },
+            {
+              "t": "tip",
+              "x": "Otra opción: [[Datos ▸ Calcular ▸ Fórmula a valor]] convierte las fórmulas seleccionadas en su resultado, en el mismo lugar."
+            }
+          ]
+        },
+        {
+          "id": "u4-texto-columnas",
+          "title": "Separar nombre y apellido",
+          "image": {
+            "src": "u4_texto_columnas_dialogo",
+            "alt": "Diálogo Texto a columnas con la vista previa separando nombres y apellidos en dos columnas.",
+            "caption": "[[Datos ▸ Texto a columnas…]]: la vista previa ya muestra el nombre y el apellido en columnas separadas."
+          },
+          "body": [
+            {
+              "t": "steps",
+              "items": [
+                "Deja vacía la columna de la derecha: allí quedarán los apellidos.",
+                "Selecciona las celdas con los nombres completos.",
+                "Ve a [[Datos ▸ Texto a columnas…]]",
+                "En **Opciones de separador**, Calc suele detectar el espacio solo (opción **Detectado**). Si no, elige **Separado por** y marca **Espacio**.",
+                "Revisa la vista previa y pulsa **Aceptar**."
+              ]
+            },
+            {
+              "t": "img",
+              "src": "u4_texto_columnas_resultado",
+              "alt": "Resultado: nombres en la columna A y apellidos en la columna B.",
+              "caption": "Resultado: el nombre en la columna A y el apellido en la B."
+            },
+            {
+              "t": "warn",
+              "x": "Los nombres compuestos, como «Luz Marina Rojas», quedan en tres columnas. Revísalos a mano."
+            }
+          ]
+        },
+        {
+          "id": "u4-duplicados",
+          "title": "Encontrar y quitar duplicados",
+          "image": {
+            "src": "u4_duplicados_dialogo",
+            "alt": "Diálogo Duplicados con opciones para comparar filas, cabecera y acción Seleccionar o Quitar.",
+            "caption": "[[Datos ▸ Duplicados…]], disponible en versiones recientes de LibreOffice como la 25.8."
+          },
+          "body": [
+            {
+              "t": "steps",
+              "items": [
+                "Selecciona la columna o la tabla.",
+                "Ve a [[Datos ▸ Duplicados…]]",
+                "Si la primera fila tiene títulos, marca **Los datos contienen columnas de cabecera**.",
+                "En **Acción**, elige **Seleccionar** para verlos primero o **Quitar** para borrarlos. Pulsa **Aceptar**."
+              ]
+            },
+            {
+              "t": "warn",
+              "x": "Antes de quitar duplicados, guarda una copia del archivo. Dos ventas iguales el mismo día pueden ser ventas reales."
+            }
+          ]
+        },
+        {
+          "id": "u4-validez",
+          "title": "Prevenir: listas desplegables con Validez",
+          "image": {
+            "src": "u4_validez_dialogo",
+            "alt": "Diálogo Validez con Permitir: Lista y las categorías de la ferretería como entradas.",
+            "caption": "[[Datos ▸ Validez…]] con la lista de categorías permitidas."
+          },
+          "body": [
+            {
+              "t": "p",
+              "x": "La mejor limpieza es la que no hace falta. Con una lista desplegable, nadie vuelve a escribir «pinturas», «PINTURAS» o «Pinturas »."
+            },
+            {
+              "t": "steps",
+              "items": [
+                "Selecciona las celdas de la columna **Categoría**.",
+                "Ve a [[Datos ▸ Validez…]]",
+                "En **Permitir** elige **Lista** y escribe una categoría por línea en **Entradas**.",
+                "Pulsa **Aceptar**. Cada celda muestra ahora una flechita con las opciones."
+              ]
+            },
+            {
+              "t": "tip",
+              "x": "En la pestaña **Aviso de error** puedes escribir un mensaje amable, como «Elige una categoría de la lista»."
+            }
+          ]
+        },
+        {
+          "id": "u4-cierre",
+          "title": "¡Misión cumplida, don Juan!",
+          "image": {
+            "src": "u3_grafico_columnas",
+            "alt": "Resumen de ventas por categoría con su gráfico de columnas.",
+            "caption": "De la libreta de papel a un resumen con gráfico que se actualiza solo."
+          },
+          "body": [
+            {
+              "t": "p",
+              "x": "La Ferretería La Universal ya tiene sus ventas en orden. En este curso aprendiste a:"
+            },
+            {
+              "t": "ul",
+              "items": [
+                "Organizar las ventas en una tabla con formato (Unidad 1).",
+                "Calcular con fórmulas, funciones y filtros (Unidad 2).",
+                "Ordenar, sacar subtotales, resumir con SUMAR.SI y graficar (Unidad 3).",
+                "Limpiar datos y prevenir errores con listas desplegables (Unidad 4)."
+              ]
+            },
+            {
+              "t": "download",
+              "file": "practica_u4_limpieza.ods",
+              "label": "Práctica de la Unidad 4",
+              "desc": "Limpia la lista de clientes, separa nombres y apellidos, quita duplicados y crea una lista de categorías."
+            },
+            {
+              "t": "tip",
+              "x": "Presenta la evaluación de esta unidad. Cuando todas estén aprobadas, verás tu resultado final del curso."
+            }
+          ]
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "q": "¿Qué hace `=ESPACIOS(A2)`?",
+            "options": [
+              "Quita los espacios del inicio y del final, y deja uno solo entre palabras",
+              "Borra todo el texto de la celda",
+              "Cuenta cuántos espacios hay",
+              "Agrega espacios entre las letras"
+            ],
+            "answer": 0,
+            "explain": "ESPACIOS limpia los espacios sobrantes sin tocar las letras."
+          },
+          {
+            "q": "La celda A2 dice «ana GÓMEZ». ¿Qué fórmula devuelve «Ana Gómez»?",
+            "options": [
+              "`=NOMPROPIO(A2)`",
+              "`=MAYUSC(A2)`",
+              "`=MINUSC(A2)`",
+              "`=ESPACIOS(A2)`"
+            ],
+            "answer": 0,
+            "explain": "NOMPROPIO pone la primera letra de cada palabra en mayúscula y el resto en minúscula."
+          },
+          {
+            "q": "¿Por qué conviene limpiar los nombres de los clientes?",
+            "options": [
+              "Porque Calc trata «pedro pérez» y «Pedro Pérez» como clientes distintos",
+              "Porque así el archivo pesa menos",
+              "Porque las mayúsculas gastan más tinta",
+              "No conviene: da lo mismo"
+            ],
+            "answer": 0,
+            "explain": "Si el mismo cliente está escrito de varias formas, los filtros, subtotales y SUMAR.SI lo cuentan como varios clientes."
+          },
+          {
+            "q": "¿Qué herramienta separa «Pedro Pérez» en dos columnas?",
+            "options": [
+              "[[Datos ▸ Texto a columnas…]]",
+              "[[Datos ▸ Subtotales...]]",
+              "[[Formato ▸ Combinar y separar celdas ▸ Combinar celdas]]",
+              "[[Insertar ▸ Gráfico…]]"
+            ],
+            "answer": 0,
+            "explain": "Texto a columnas corta el texto usando un separador, como el espacio."
+          },
+          {
+            "q": "¿Cómo evita don Juan que se escriban mal las categorías en el futuro?",
+            "options": [
+              "Con una lista desplegable en [[Datos ▸ Validez…]]",
+              "Escribiendo todo en mayúsculas",
+              "Con un gráfico circular",
+              "Ocultando la columna Categoría"
+            ],
+            "answer": 0,
+            "explain": "La validez con lista solo permite elegir entre las opciones definidas, así todos escriben igual."
+          }
+        ]
+      }
+    }
+  ]
+}
