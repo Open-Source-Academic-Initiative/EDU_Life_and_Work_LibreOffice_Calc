@@ -76,11 +76,13 @@ def validate(course):
     if not course.get("units"):
         errors.append("course has no units")
     cert = course.get("certificate", {})
-    for key in ("title", "program", "issuer", "site", "logo", "serialPrefix", "verifyUrl"):
+    for key in ("title", "program", "issuer", "site", "logo", "serialPrefix", "verifyUrl", "textVersion"):
         if not cert.get(key):
             errors.append(f"certificate: missing '{key}'")
     if cert.get("verifyUrl") and "{serial}" not in cert["verifyUrl"]:
         errors.append("certificate.verifyUrl must contain {serial}")
+    if cert.get("shareUrl") and "{serial}" not in cert["shareUrl"]:
+        errors.append("certificate.shareUrl must contain {serial}")
     if cert.get("logo") and not os.path.exists(os.path.join(BRAND_DIR, cert["logo"] + ".jpg")):
         errors.append(f"certificate logo assets/brand/{cert['logo']}.jpg not found")
     for u in course.get("units", []):

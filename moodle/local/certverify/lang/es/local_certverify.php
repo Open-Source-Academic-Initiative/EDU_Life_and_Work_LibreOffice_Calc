@@ -32,6 +32,7 @@ $string['checkfilehelp'] = 'Sube el PDF del certificado para confirmar que es ex
 $string['clihelp'] = 'También puedes comparar las huellas tú mismo: sha256sum archivo.pdf o md5sum archivo.pdf (Linux), certutil -hashfile archivo.pdf SHA256 (Windows).';
 $string['course'] = 'Curso';
 $string['filematch'] = 'El archivo coincide exactamente con el certificado expedido (SHA-256 y MD5).';
+$string['filematchprevious'] = 'El archivo es auténtico: corresponde a una versión anterior de este mismo certificado (por ejemplo, de antes de que el curso cambiara de nombre). La versión actual se puede descargar desde el curso.';
 $string['filemissing'] = 'Elige el archivo PDF que quieres comprobar.';
 $string['filenomatch'] = 'El archivo NO coincide con el certificado expedido: fue modificado o corresponde a otro serial. SHA-256 del archivo subido: {$a->sha256} · MD5: {$a->md5}';
 $string['filetoobig'] = 'El archivo es demasiado grande para ser un certificado de este curso.';
@@ -49,3 +50,16 @@ $string['result'] = 'Resultado';
 $string['serial'] = 'Serial';
 $string['valid'] = 'Certificado válido: fue expedido por este campus.';
 $string['verify'] = 'Verificar';
+
+// 1.3.0 — social sharing (#EDU_Life_and_Work).
+$string['sharetitle'] = 'Comparte tu logro';
+$string['sharehelp'] = 'Añade este certificado a tu perfil de LinkedIn o compártelo. La publicación muestra tu nombre, el curso y «Aprobado» (nunca tu nota) e invita a otras personas a vivir la misma sesión de aprendizaje.';
+$string['sharelinkedinadd'] = 'Añadir a mi perfil de LinkedIn';
+$string['sharelinkedin'] = 'Compartir en LinkedIn';
+$string['sharefacebook'] = 'Compartir en Facebook';
+$string['shareheadline'] = '{$a->name} completó su sesión de aprendizaje «{$a->course}»';
+$string['shareinvite'] = '¡Vive tú también esta sesión de aprendizaje, gratis, en el Campus OpenSAI!';
+$string['sharecta'] = 'Inscríbete gratis';
+$string['shareverify'] = 'Verificar el certificado';
+$string['sharecardkicker'] = 'Sesión de aprendizaje completada';
+$string['sharecardline'] = 'completó su sesión de aprendizaje';

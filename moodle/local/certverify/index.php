@@ -30,6 +30,7 @@
 require(__DIR__ . '/../../config.php');
 
 use local_certverify\lookup;
+use local_certverify\share;
 
 $serial = lookup::clean_serial(optional_param('serial', '', PARAM_RAW_TRIMMED));
 if (!lookup::is_valid_format($serial)) {
@@ -58,8 +59,15 @@ if ($certificate && optional_param('checkfile', 0, PARAM_BOOL) && confirm_sesske
     } else {
         $sha256 = hash_file('sha256', $file['tmp_name']);
         $md5 = md5_file($file['tmp_name']);
-        $matches = hash_equals($certificate->sha256, $sha256) && hash_equals($certificate->md5, $md5);
-        $filecheck = ['status' => $matches ? 'match' : 'nomatch', 'sha256' => $sha256, 'md5' => $md5];
+        // Any version recorded for the serial is genuine; the shown (newest) one is "match".
+        $status = 'nomatch';
+        foreach ($certificate->versions as $v) {
+            if (hash_equals($v['sha256'], $sha256) && hash_equals($v['md5'], $md5)) {
+                $status = $v['sha256'] === $certificate->sha256 ? 'match' : 'matchprevious';
+                break;
+            }
+        }
+        $filecheck = ['status' => $status, 'sha256' => $sha256, 'md5' => $md5];
     }
     @unlink($file['tmp_name'] ?? '');
 }
@@ -110,12 +118,21 @@ if (!empty($serialparam)) {
     }, $rows);
     echo html_writer::table($table);
 
+    // Social sharing (#EDU_Life_and_Work) — passed certificates only; the shared page/preview never show the grade.
+    if (share::shareable($certificate)) {
+        echo $OUTPUT->heading(get_string('sharetitle', 'local_certverify'), 3);
+        echo html_writer::tag('p', get_string('sharehelp', 'local_certverify'));
+        echo share::buttons($certificate);
+    }
+
     // File integrity check.
     echo $OUTPUT->heading(get_string('checkfile', 'local_certverify'), 3);
     echo html_writer::tag('p', get_string('checkfilehelp', 'local_certverify'));
     if ($filecheck) {
         if ($filecheck['status'] === 'match') {
             echo $OUTPUT->notification(get_string('filematch', 'local_certverify'), 'success', false);
+        } else if ($filecheck['status'] === 'matchprevious') {
+            echo $OUTPUT->notification(get_string('filematchprevious', 'local_certverify'), 'success', false);
         } else if ($filecheck['status'] === 'nomatch') {
             echo $OUTPUT->notification(get_string('filenomatch', 'local_certverify',
                 (object) ['sha256' => $filecheck['sha256'], 'md5' => $filecheck['md5']]), 'error', false);

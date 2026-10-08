@@ -365,3 +365,11 @@ td code { white-space: nowrap; }
 .cert-info { font-size: .82rem; color: var(--ink-soft); line-height: 1.5; }
 .cert-info code { white-space: nowrap; }
 .cert-info a { color: var(--note); font-weight: 600; }
+.cert-share { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; }
+.cert-share-label { font-weight: 600; color: var(--ink); }
+.cert-info a.btn.share { display: inline-flex; align-items: center; gap: 8px; color: #fff; padding: 7px 14px; font-size: .85rem; text-decoration: none; border: 0; }
+.cert-info a.btn.share.li { background: #0A66C2; }
+.cert-info a.btn.share.li:hover { background: #004182; }
+.cert-info a.btn.share.fb { background: #1877F2; }
+.cert-info a.btn.share.fb:hover { background: #0c5fd0; }
+.cert-share-note { flex-basis: 100%; font-size: .78rem; }

@@ -32,6 +32,7 @@ $string['checkfilehelp'] = 'Upload the certificate PDF to confirm it is exactly 
 $string['clihelp'] = 'You can also compare the fingerprints yourself: sha256sum file.pdf or md5sum file.pdf (Linux), certutil -hashfile file.pdf SHA256 (Windows).';
 $string['course'] = 'Course';
 $string['filematch'] = 'The file matches the issued certificate exactly (SHA-256 and MD5).';
+$string['filematchprevious'] = 'The file is genuine: it is an earlier version of this same certificate (for example, from before the course was renamed). The current version can be downloaded from the course.';
 $string['filemissing'] = 'Choose the PDF file to check.';
 $string['filenomatch'] = 'The file does NOT match the issued certificate: it was modified or belongs to a different serial. Uploaded file SHA-256: {$a->sha256} · MD5: {$a->md5}';
 $string['filetoobig'] = 'The file is too large to be a certificate from this course.';
@@ -49,3 +50,16 @@ $string['result'] = 'Result';
 $string['serial'] = 'Serial';
 $string['valid'] = 'Valid certificate: it was issued by this campus.';
 $string['verify'] = 'Verify';
+
+// 1.3.0 — social sharing (#EDU_Life_and_Work).
+$string['sharetitle'] = 'Share your achievement';
+$string['sharehelp'] = 'Add this certificate to your LinkedIn profile or share it. The post shows your name, the course and "Passed" (never your grade) and invites others to take the same learning session.';
+$string['sharelinkedinadd'] = 'Add to my LinkedIn profile';
+$string['sharelinkedin'] = 'Share on LinkedIn';
+$string['sharefacebook'] = 'Share on Facebook';
+$string['shareheadline'] = '{$a->name} completed the learning session "{$a->course}"';
+$string['shareinvite'] = 'Take this learning session too, for free, at the OpenSAI Campus!';
+$string['sharecta'] = 'Enrol for free';
+$string['shareverify'] = 'Verify the certificate';
+$string['sharecardkicker'] = 'Learning session completed';
+$string['sharecardline'] = 'completed the learning session';

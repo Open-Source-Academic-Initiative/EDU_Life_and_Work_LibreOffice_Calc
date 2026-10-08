@@ -27,6 +27,9 @@ namespace local_certverify;
  * browser tab can overwrite it; suspend_data is the fallback. Either way the
  * serial leads back to the Moodle account (whose full name is shown) and to
  * the SCORM activity.
+ * A certificate can be re-issued with the same serial (e.g. after the course
+ * was renamed): every version recorded for the serial is a genuine PDF, and the
+ * newest one is shown.
  *
  * @package    local_certverify
  * @copyright  2026 Open Source Academic Initiative (OpenSAI)
@@ -98,14 +101,73 @@ class lookup {
                 return null;
             }
             $course = get_course($scorm->course);
+            $entry->courseid = (int) $course->id;
             $entry->fullname = fullname($user);
             $entry->coursename = format_string($course->fullname, true,
                 ['context' => \context_course::instance($course->id)]);
             $entry->activityname = format_string($scorm->name);
             $entry->recorded = (int) $record->timemodified;
+            $entry->versions = self::versions($records, $serial, $record->userid, $record->scormid);
             return $entry;
         }
         return null;
+    }
+
+    /**
+     * All PDF versions (sha256 + md5) recorded for a serial by the same learner and activity.
+     *
+     * @param \stdClass[] $records tracking records that mention the serial
+     * @param string $serial
+     * @param int $userid
+     * @param int $scormid
+     * @return array[] each ['sha256' => ..., 'md5' => ...]
+     */
+    public static function versions(array $records, string $serial, int $userid, int $scormid): array {
+        $versions = [];
+        foreach ($records as $record) {
+            if ((int) $record->userid !== $userid || (int) $record->scormid !== $scormid) {
+                continue;
+            }
+            $lines = $record->element === 'cmi.comments'
+                ? preg_split('/;\s*/', $record->value)
+                : self::suspend_data_lines($record->value, $serial);
+            foreach ($lines as $line) {
+                if ($entry = self::parse_entry($line . ';', $serial)) {
+                    $versions[$entry->sha256] = ['sha256' => $entry->sha256, 'md5' => $entry->md5];
+                }
+            }
+        }
+        return array_values($versions);
+    }
+
+    /**
+     * The certificates in the course's suspend_data JSON ("c" = current, "h" = history) for a serial,
+     * as cmi.comments-style lines, current first.
+     *
+     * @param string $value
+     * @param string $serial
+     * @return string[]
+     */
+    public static function suspend_data_lines(string $value, string $serial): array {
+        $data = json_decode($value, true);
+        if (!is_array($data)) {
+            return [];
+        }
+        $candidates = [];
+        if (!empty($data['c']) && is_array($data['c'])) {
+            $candidates[] = $data['c'];
+        }
+        if (!empty($data['h']) && is_array($data['h'])) {
+            $candidates = array_merge($candidates, array_filter($data['h'], 'is_array'));
+        }
+        $lines = [];
+        foreach ($candidates as $c) {
+            if (($c['serial'] ?? null) === $serial) {
+                $lines[] = implode('|', ['OSAICERT', '1', $serial, $c['issued'] ?? '', $c['grade'] ?? '',
+                    !empty($c['passed']) ? 'P' : 'N', $c['sha256'] ?? '', $c['md5'] ?? '']);
+            }
+        }
+        return $lines;
     }
 
     /**
@@ -116,38 +178,26 @@ class lookup {
      * @return \stdClass|null
      */
     public static function parse_suspend_data(string $value, string $serial): ?\stdClass {
-        $data = json_decode($value, true);
-        if (!is_array($data)) {
-            return null;
-        }
-        $candidates = [];
-        if (!empty($data['c']) && is_array($data['c'])) {
-            $candidates[] = $data['c'];
-        }
-        if (!empty($data['h']) && is_array($data['h'])) {
-            $candidates = array_merge($candidates, array_filter($data['h'], 'is_array'));
-        }
-        foreach ($candidates as $c) {
-            if (($c['serial'] ?? null) !== $serial) {
-                continue;
-            }
-            $line = implode('|', ['OSAICERT', '1', $serial, $c['issued'] ?? '', $c['grade'] ?? '',
-                !empty($c['passed']) ? 'P' : 'N', $c['sha256'] ?? '', $c['md5'] ?? '']);
+        foreach (self::suspend_data_lines($value, $serial) as $line) {
             // Same validation as a cmi.comments entry.
-            return self::parse_entry($line . ';', $serial);
+            if ($entry = self::parse_entry($line . ';', $serial)) {
+                return $entry;
+            }
         }
         return null;
     }
 
     /**
      * Extracts the certificate entry for a serial from a cmi.comments value
-     * (the value may contain several entries separated by ";").
+     * (the value may contain several entries separated by ";"; the course appends,
+     * so the last valid entry for the serial is the newest version).
      *
      * @param string $value
      * @param string $serial
      * @return \stdClass|null
      */
     public static function parse_entry(string $value, string $serial): ?\stdClass {
+        $found = null;
         foreach (preg_split('/;\s*/', $value) as $raw) {
             $p = explode('|', trim($raw));
             if (count($p) < 8 || $p[0] !== 'OSAICERT' || $p[1] !== '1' || $p[2] !== $serial) {
@@ -157,7 +207,7 @@ class lookup {
                     || !preg_match('/^[0-9a-f]{32}$/i', $p[7])) {
                 continue;
             }
-            return (object) [
+            $found = (object) [
                 'serial' => $serial,
                 'issued' => $p[3],
                 'grade' => (int) $p[4],
@@ -166,6 +216,6 @@ class lookup {
                 'md5' => strtolower($p[7]),
             ];
         }
-        return null;
+        return $found;
     }
 }

@@ -15,7 +15,7 @@
   var state = {
     seen: {},      // unitId -> [bool per slide]
     quiz: {},      // unitId -> {best: 0-100, tries: n}
-    cert: null,    // issued certificate {serial, issued (YYYY-MM-DD), grade, name, sha256, md5}
+    cert: null,    // issued certificate {serial, issued (YYYY-MM-DD), grade, name, sha256, md5, tv}
     certHistory: [], // earlier certificates (grade changed), newest first, max 10
     view: { unit: 0, slide: 0, mode: "slide" } // mode: slide | quiz | summary
   };
@@ -485,7 +485,11 @@
   // tracking data and compares the hashes of an uploaded PDF.
   // The serial and date are kept in suspend_data, so downloading again gives a
   // byte-identical file (same hashes). A new serial is issued only when the
-  // grade or the name changes.
+  // grade or the name changes. "tv" records which certificate texts were
+  // printed (course.json certificate.textVersion; none = version 1). When the
+  // texts change (e.g. the course is renamed), the next download re-issues the
+  // certificate with the same serial, date and grade: the new PDF's record is
+  // appended and the old hashes move to the history, so both files verify.
   var CROCKFORD = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
 
   function newSerial(prefix) {
@@ -536,12 +540,13 @@
 
   // The campus reads cmi.comments to verify certificates. Moodle appends to it
   // in memory, so a stale browser tab can overwrite it: at each session start,
-  // write back any issued certificate that is missing from the record.
+  // write back any issued certificate that is missing from the record
+  // (oldest first: the verifier takes the last record of a serial as current).
   function healCertRecords() {
     if (!SCORM.isLMS) return;
     var current = SCORM.get("cmi.comments"), missing = "";
-    [state.cert].concat(state.certHistory).forEach(function (c) {
-      if (c && c.serial && c.sha256 && current.indexOf(c.serial) < 0) missing += certRecord(c);
+    state.certHistory.slice().reverse().concat([state.cert]).forEach(function (c) {
+      if (c && c.serial && c.sha256 && current.indexOf(c.sha256) < 0) missing += certRecord(c);
     });
     if (missing) {
       // Moodle appends whatever is set to cmi.comments; other LMSs replace it.
@@ -553,7 +558,35 @@
   function certInfo(c) {
     return "Serial <b>" + esc(c.serial) + "</b> · expedido el " + esc(formatIsoDate(c.issued)) +
       " · SHA-256 <code>" + esc(c.sha256.slice(0, 16)) + "…</code> · <a href=\"" + esc(verifyUrl(c.serial)) +
-      "\" target=\"_blank\" rel=\"noopener\">Verificar en el campus</a>";
+      "\" target=\"_blank\" rel=\"noopener\">Verificar en el campus</a>" + shareButtons(c);
+  }
+
+  // Social sharing (campaign #EDU_Life_and_Work): passed certificates only. The campus share page
+  // (local/certverify/share.php) carries the Open Graph preview — name, course and "Aprobado", never
+  // the grade — so LinkedIn/Facebook only receive its URL (they no longer accept prefilled text).
+  function shareUrl(serial, source) {
+    var cert = COURSE.certificate;
+    return cert.shareUrl.replace("{serial}", encodeURIComponent(serial)) + "&utm_source=" + source +
+      "&utm_medium=social&utm_campaign=" + encodeURIComponent(cert.hashtag || "");
+  }
+
+  // Brand marks (Simple Icons, CC0), drawn inline so no icon font is needed.
+  var BRAND_LI = "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z";
+  var BRAND_FB = "M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z";
+  function brand(path) {
+    return "<svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"currentColor\" aria-hidden=\"true\" focusable=\"false\"><path d=\"" + path + "\"/></svg>";
+  }
+
+  function shareButtons(c) {
+    var cert = COURSE.certificate;
+    if (!cert.shareUrl || !c.passed) return "";
+    var li = "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(shareUrl(c.serial, "linkedin"));
+    var fb = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shareUrl(c.serial, "facebook")) +
+      (cert.hashtag ? "&hashtag=" + encodeURIComponent("#" + cert.hashtag) : "");
+    return "<span class=\"cert-share\"><span class=\"cert-share-label\">Comparte tu logro:</span>" +
+      "<a class=\"btn share li\" href=\"" + esc(li) + "\" target=\"_blank\" rel=\"noopener\">" + brand(BRAND_LI) + "LinkedIn</a>" +
+      "<a class=\"btn share fb\" href=\"" + esc(fb) + "\" target=\"_blank\" rel=\"noopener\">" + brand(BRAND_FB) + "Facebook</a>" +
+      "<span class=\"cert-share-note\">En la página de verificación también puedes añadirlo a tu perfil de LinkedIn.</span></span>";
   }
 
   function downloadCertificate() {
@@ -566,10 +599,16 @@
     }
     var c = state.cert;
     var isNew = !(c && c.grade === st.average && c.name === name);
+    var previous = null;
+    if (!isNew && (c.tv || 1) !== cert.textVersion) {
+      previous = { serial: c.serial, issued: c.issued, grade: c.grade, passed: c.passed, sha256: c.sha256, md5: c.md5 };
+      c.tv = cert.textVersion;
+    }
     if (isNew) {
       var d = new Date();
       c = {
         serial: newSerial(cert.serialPrefix), name: name, grade: st.average, passed: st.passed,
+        tv: cert.textVersion,
         issued: d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2)
       };
     }
@@ -588,13 +627,13 @@
     var bytes = window.Certificate.toBytes(window.Certificate.build(data));
     c.sha256 = window.Hash.sha256(bytes);
     c.md5 = window.Hash.md5(bytes);
-    if (isNew) {
-      if (state.cert) {
-        var prev = state.cert;
-        state.certHistory.unshift({ serial: prev.serial, issued: prev.issued, grade: prev.grade,
-          passed: prev.passed, sha256: prev.sha256, md5: prev.md5 });
-        state.certHistory = state.certHistory.slice(0, 10);
-      }
+    if (isNew && state.cert) {
+      var prev = state.cert;
+      previous = { serial: prev.serial, issued: prev.issued, grade: prev.grade,
+        passed: prev.passed, sha256: prev.sha256, md5: prev.md5 };
+    }
+    if (isNew || previous) {
+      if (previous) state.certHistory = [previous].concat(state.certHistory).slice(0, 10);
       state.cert = c;
       SCORM.set("cmi.comments", certRecord(c));
       saveProgress();

@@ -1,7 +1,7 @@
 {
   "id": "calc-la-universal",
-  "version": "2.1.1",
-  "title": "LibreOffice Calc para pymes: de la libreta al computador",
+  "version": "2.3.0",
+  "title": "Hoja de Cálculo para mi Negocio y mi Trabajo: de la libreta al computador",
   "shortTitle": "La Universal",
   "subtitle": "Escuela de Datos",
   "passingScore": 70,
@@ -13,18 +13,18 @@
         "text": "Curso "
       },
       {
-        "text": "Excel",
+        "text": "Hoja de Cálculo para mi Negocio y mi Trabajo",
         "italic": true
-      },
-      {
-        "text": " con LibreOffice"
       }
     ],
     "issuer": "Open Source Academic Initiative (OpenSAI)",
     "site": "campus.opensai.org",
     "logo": "opensai_logo",
     "serialPrefix": "OSAI",
-    "verifyUrl": "https://campus.opensai.org/local/certverify/index.php?serial={serial}"
+    "verifyUrl": "https://campus.opensai.org/local/certverify/index.php?serial={serial}",
+    "shareUrl": "https://campus.opensai.org/local/certverify/share.php?serial={serial}",
+    "hashtag": "EDU_Life_and_Work",
+    "textVersion": 2
   },
   "units": [
     {

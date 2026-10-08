@@ -13,4 +13,4 @@ Al confirmar su cuenta, usted declara conocer y aceptar la <a href="https://open
 Si necesita ayuda, escríbanos en <a href="https://opensai.org/contacto">opensai.org/contacto</a>.
 {$a->admin}';
 // Footer of the "?" help popover (replaces "Desarrollado por Moodle").
-$string['poweredbymoodle'] = 'Un <a href="https://moodle.com">Moodle</a> servido por OpenSAI con <span role="img" aria-label="amor" style="color:#e0245e">❤️</span> para un mundo con Iguaz@s MÁS pensantes...';
+$string['poweredbymoodle'] = 'Un <a href="https://moodle.com">Moodle</a> servido por OpenSAI con <span role="img" aria-label="amor" style="color:#e0245e">❤️</span> para el mundo...';

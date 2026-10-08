@@ -25,7 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_certverify';
-$plugin->version   = 2026092600;
+$plugin->version   = 2026100801;
 $plugin->requires  = 2023100900; // Moodle 4.3: SCORM tracking tables scorm_attempt / scorm_scoes_value.
 $plugin->maturity  = MATURITY_STABLE;
-$plugin->release   = '1.1.0';
+$plugin->release   = '1.3.1';
